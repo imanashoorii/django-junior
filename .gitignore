@@ -108,6 +108,9 @@ ENV/
 *.sqlite3
 */*.sqlite3
 media/
+*/media/
+posters/
+*/posters/
 *.pyc
 *.db
 *.pid
