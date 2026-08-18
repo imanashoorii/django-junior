@@ -108,6 +108,27 @@ def update_api_view(request, pk: int) -> JsonResponse:
     return JsonResponse({"error": "Method Not Allowed"}, status=405)
 
 
+def delete_view(request, pk):
+    item = get_object_or_404(WatchItem, pk=pk)
+    return render(request, 'delete_item.html', {'item': item})
+
+def delete_api_view(request, pk: int) -> JsonResponse:
+    if request.method != "DELETE":
+        return JsonResponse({"error": "Method Not Allowed"}, status=405)
+    try:
+        obj = WatchItem.objects.get(pk=pk)
+    except WatchItem.DoesNotExist:
+        return JsonResponse(
+            {
+                "message": "آیتم موردنظر یافت نشد!"
+            },
+            status=404
+        )
+    obj.delete()
+    return JsonResponse({}, status=204)
+
+
+
 
 
 

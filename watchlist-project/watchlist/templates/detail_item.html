@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>details: {{ item.title }}</title>
+    <title>Details: {{ item.title }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
 </head>
 
@@ -16,7 +16,7 @@
             <div class="row g-4 d-flex align-items-stretch flex-md-row flex-column">
 
                 <div class="col-md-4 text-center">
-                    <img src="{{ item.poster.url }}" alt="poster {{ item.title }}"
+                    <img src="{{ item.poster.url }}" alt="Poster {{ item.title }}"
                         class="img-fluid rounded shadow-sm h-100" style="object-fit: cover;">
                 </div>
 
@@ -26,23 +26,23 @@
                         <table class="table align-middle">
                             <tbody>
                                 <tr>
-                                    <th>type</th>
+                                    <th>Type</th>
                                     <td>{{ item.get_type_display }}</td>
                                 </tr>
                                 <tr>
-                                    <th>status</th>
+                                    <th>Status</th>
                                     <td>
                                         {% if item.is_watched %}
-                                        <span id="watched" class="badge bg-success">watched</span>
-                                        <span id="not-watched" class="badge bg-secondary d-none">not watch</span>
+                                        <span id="watched" class="badge bg-success">Watched</span>
+                                        <span id="not-watched" class="badge bg-secondary d-none">Not Watched</span>
                                         {% else %}
-                                        <span id="watched" class="badge bg-success d-none">watched</span>
-                                        <span id="not-watched" class="badge bg-secondary">not watched</span>
+                                        <span id="watched" class="badge bg-success d-none">Watched</span>
+                                        <span id="not-watched" class="badge bg-secondary">Not Watchedا</span>
                                         {% endif %}
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>link</th>
+                                    <th>Link</th>
                                     <td>
                                         {% if item.url %}
                                         <a href="{{ item.url }}" target="_blank" class="">{{ item.url }}</a>
@@ -52,7 +52,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>create time</th>
+                                    <th>Created Date</th>
                                     <td>{{ item.created_at|date:"Y/m/d - H:i" }}</td>
                                 </tr>
                             </tbody>
@@ -64,9 +64,11 @@
                         <button id="mark-unwatched"
                             class="{% if not item.is_watched %}d-none{% endif %} btn btn-warning">Mark as unwatched</button>
                         <button id="mark-watched"
-                            class="{% if item.is_watched %}d-none{% endif %} btn btn-primary">Mark as watched</button>
-                        <a href="/{{ item.id }}/edit/" class="btn btn-secondary w-100">Edit this item</a>
-                        <a href="/" class="btn btn-danger w-100">Return</a>
+                            class="{% if item.is_watched %}d-none{% endif %} btn btn-success">علامت زدن به عنوان
+                            دیده‌شده</button>
+                        <a href="/{{ item.id }}/edit/" class="btn btn-primary w-100">Edit this item</a>
+                        <a href="/{{ item.id }}/delete/" class="btn btn-danger w-100">Delete this item</a>
+                        <a href="/" class="btn btn-secondary w-100">Return</a>
                     </div>
                 </div>
 
