@@ -120,7 +120,7 @@ def delete_api_view(request, pk: int) -> JsonResponse:
     except WatchItem.DoesNotExist:
         return JsonResponse(
             {
-                "message": "آیتم موردنظر یافت نشد!"
+                "message": "Item not found."
             },
             status=404
         )
